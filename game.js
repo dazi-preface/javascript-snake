@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	document.addEventListener("keydown", move, false);
 
 	if(localStorage.getItem("snake-highscore"))
-		console.log(localStorage.getItem("snake-highscore"));
 		document.getElementById("highscore").innerHTML = "High Score: " + localStorage.getItem("snake-highscore");
 
 	var rightPressed = false;
@@ -97,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	function collisionCheck(){
 		if(snakeX == appleX & snakeY == appleY){
 			appleX = Math.floor(Math.random() * ((canvas.width - 50)/50 + 1)) * 50;
-			appleX = Math.floor(Math.random() * ((canvas.height - 50)/50 + 1)) * 50;
+			appleY = Math.floor(Math.random() * ((canvas.height - 50)/50 + 1)) * 50;
 			score++;
 			document.getElementById("score").innerHTML =  "Score: " + score;
 		}
@@ -125,11 +124,9 @@ document.addEventListener("DOMContentLoaded", () => {
 	function highScore(){
 		if(!localStorage.getItem("snake-highscore")){
 			localStorage.setItem("snake-highscore", 0);
-			console.log(localStorage.getItem("snake-highscore"));
 		}else{
 			if(localStorage.getItem("snake-highscore") < score){
 				localStorage.setItem("snake-highscore", score);
-				console.log(localStorage.getItem("snake-highscore"));
 			}
 		}
 		
